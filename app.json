@@ -1,9 +1,8 @@
 {
-  "name": "Smile Chat App",
+  "name": "smile-chat-app",
   "description": "Anthony Mburu Chat app",
   "website": "https://github.com/AntoMburu/Socket.io-basic-chat-application",
   "repository": "https://github.com/AntoMburu/Socket.io-basic-chat-application",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "success_url": "/",
   "keywords": [
     "node",
