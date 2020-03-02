@@ -1,0 +1,9 @@
+{
+    "name": "smile-chat-app",
+    "version": "0.0.1",
+    "description": "Smile Chat-App ",
+    "dependencies": {
+        "express": "*",
+        "socket.io": "*"
+    }
+}
