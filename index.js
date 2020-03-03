@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 server.listen(process.env.PORT || 2544);
-console.log('server is up and runnig');
+console.log('server is up and running');
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
@@ -18,14 +18,14 @@ app.get('/', function(req, res) {
 
 io.sockets.on('connection', function(socket) {
     connections.push(socket);
-    io.emit('broadcast', "WELCOME TO SMILE CHAT BY ANTO");
+
     console.log('connected: %s sockets connected ', connections.length);
     ////disconnect
     socket.on('disconnect', function(data) {
         users.splice(users.indexOf(socket.username), 1);
         updateUsernames;
         connections.splice(connections.indexOf(socket), 1);
-        console.log('user disconnected %s sockets connected', connections.length);
+        console.log('user disconnected %s Users remaining', connections.length);
 
     });
     //////send message
@@ -36,6 +36,7 @@ io.sockets.on('connection', function(socket) {
 
             {
                 msg: data,
+                color: "blue",
                 user: socket.username
             });
 
@@ -46,6 +47,10 @@ io.sockets.on('connection', function(socket) {
         socket.username = data;
         users.push(socket.username);
         updateUsernames();
+
+        socket.emit('request', socket.username);
+        ///   io.emit('broadcast', socket.username);
+
     });
 
     function updateUsernames() {
@@ -54,3 +59,4 @@ io.sockets.on('connection', function(socket) {
     }
 
 });
+///});
