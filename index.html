@@ -8,16 +8,52 @@
     </script>
     <style>
         body {
-            margin-top: 30px;
+            margin-top: 10px;
+            background-color: rgba(240, 235, 171, 0.747);
+        }
+        
+        .uf {
+            text-align: center;
+            margin-top: 325px;
         }
         
         #messagearea {
             display: none;
+            background-color: #ffc10e;
+            border-radius: 10px;
         }
-         marquee{
-       color: #8ebf42;
-      font-family: sans-serif;
-      }
+        
+        #img {
+            text-align: center;
+        }
+        
+        marqueee {
+            color: #000000;
+            background-color: rgb(240, 235, 171);
+            font-family: sans-serif;
+            align-content: center;
+        }
+        
+        .me {
+            text-align: center;
+            background-color: rgb(10, 9, 9);
+            color: #ffffff;
+            border-radius: 100px;
+            font-family: sans-serif;
+            margin-top: 10px;
+        }
+        
+        .h3 {
+            text-align: center;
+            background-color: rgb(10, 9, 9);
+            color: #ffc10e;
+            border-radius: 300px;
+        }
+        
+        .well {
+            background-color: rgb(240, 235, 171);
+            margin-top: 10px;
+        }
     </style>
 
 </head>
@@ -29,29 +65,33 @@
 
         <div id="userFormArea" class="row">
             <div class="col-12-md">
-                <form id="userForm">
-                    <div class="form-group">
-                        <label>Enter username</label>
-                       <input class="form-control" id="username" />
-                        <br />
-                        <input type="submit" class="btn btn-primary" value="Login" />
-                    </div>
-                </form>
+                <div class="uf">
+                    <form id="userForm">
+                        <div class="form-group">
+                            <h4> <label>Enter Nickname</label></h4>
+                            <input class="form-control" id="username" placeholder="octo" maxlength="12" autocomplete="off" required />
+                            <br />
+                            <input type="submit" class="btn btn-primary" value="Login" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-
         <div class="row" id="messageArea">
             <div class="col-md-4">
                 <div class="well">
-                     
-                    AntoMburu made this for you!! .........still lots of work to be done<br> 
-                                        
-                        <img src="/images/smile.jpg" width="120" height="120" align="center" >
-                                        <hr size="4px" color="blue">
-                    <h3>Users Currently Online</h3>
-                        <marquee direction="up">
-                    <ul class="list-group" id="users"></ul>
-                        </marquee>
+                    <div class="me"> </div>
+                    <h6>
+                        Anto made this for you!! .........still lots of work to be done</h6><br>
+                    <hr size="4px" color="blue">
+                    <div id="img"> <img src="/images/emoji.svg" width="100px" height="100px"></div>
+                    <div class="h3">
+                        <h3>Users Currently Online</h3>
+                    </div>
+                    <marqueee scrolldelay="200">
+                        <ul class="list-group" id="users"></ul>
+                    </marqueee>
+
                 </div>
             </div>
             <div class="col-md-8">
@@ -80,6 +120,25 @@
             var $userForm = $('#userForm');
             var $users = $('#users');
             var $username = $('#username');
+
+
+            ///
+            $messageForm.submit(function(e) {
+                e.preventDefault();
+                socket.emit('connection');
+
+            });
+            socket.on('broadcast', function(data) {
+                $chat.append('<div class="me">' + data + '</div > ');
+            });
+            ///
+
+
+
+
+
+
+
 
             $messageForm.submit(function(e) {
                 e.preventDefault();
