@@ -36,9 +36,9 @@
         
         .me {
             text-align: center;
-            background-color: rgb(10, 9, 9);
+            background-color: rgba(10, 9, 9, 0.527);
             color: #ffffff;
-            border-radius: 100px;
+            border-radius: 1px;
             font-family: sans-serif;
             margin-top: 10px;
         }
@@ -128,11 +128,14 @@
                 socket.emit('connection');
 
             });
-            socket.on('broadcast', function(data) {
-                $chat.append('<div class="me">' + data + '</div > ');
+            socket.on('request', function(data) {
+                $chat.append('<div class="me"><strong>' + data + ' ' + 'welcome to smile chat  </strong> ' + '</div > ');
             });
-            ///
-
+            ///----------------------/////////////////
+            socket.on('broadcast', function(data) {
+                $chat.append('<div class="me"><strong>' + data + 'has joined the chat  </strong> ' + '</div > ');
+            });
+            /////------------------------//////////
 
 
 
