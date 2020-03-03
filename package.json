@@ -1,7 +1,7 @@
 {
     "name": "smile-chat-app",
     "version": "0.0.1",
-    "description": "Smile Chat-App ",
+    "description": "Smile Chat built using socket.io I will later integrate into my Technovation APP ",
     "dependencies": { "express": "^4.15.2",
     "socket.io": "^1.7.3"
   },
