@@ -5,9 +5,12 @@ var io = require('socket.io').listen(server);
 users = [];
 connections = [];
 
+app.use(express.static(__dirname + '/public'));
+
+
 
 server.listen(process.env.PORT || 2544);
-console.log('server is up and running');
+console.log('server is up and runnig');
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
@@ -15,6 +18,7 @@ app.get('/', function(req, res) {
 
 io.sockets.on('connection', function(socket) {
     connections.push(socket);
+    io.emit('broadcast', "WELCOME TO SMILE CHAT BY ANTO");
     console.log('connected: %s sockets connected ', connections.length);
     ////disconnect
     socket.on('disconnect', function(data) {
@@ -47,6 +51,6 @@ io.sockets.on('connection', function(socket) {
     function updateUsernames() {
         io.sockets.emit('get users', users)
 
-
     }
+
 });
