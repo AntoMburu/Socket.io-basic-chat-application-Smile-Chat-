@@ -7,7 +7,7 @@ connections = [];
 
 
 server.listen(process.env.PORT || 2544);
-console.log('server is up and runnig');
+console.log('server is up and running');
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
